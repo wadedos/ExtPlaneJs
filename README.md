@@ -13,7 +13,7 @@ Inspired by [ExtPlaneInterface for Java](https://github.com/pau662/ExtPlaneInter
 
 Make sure X-Plane is started and the plugin is installed and active.
 
-### Edit Config
+### ExtPlane Config
 Either modify the config.json or modify the config object passed into ExtPlaneJs
 
 ```
@@ -32,13 +32,79 @@ Either modify the config.json or modify the config object passed into ExtPlaneJs
 3. Install Node.js Dependencies `npm install`
 4. Run `npm start`
 
-Watch you terminal as your X-Plane information is streamed on-screen
+Watch your terminal as your X-Plane information is streamed on-screen
+
+
+# Example
+
+```
+var ExtPlaneJs = require('ExtPlaneJs');
+
+var ExtPlane = new ExtPlaneJs({
+    host: '127.0.0.1',
+    port: 51000,
+    broadcast: true
+});
+
+ExtPlane.on('loaded', function(){
+
+	ExtPlane.client.interval(0.33);
+	
+	// Subscribe to the airspeed
+	ExtPlane.client.subscribe('sim/cockpit2/gauges/indicators/airspeed_kts_pilot');
+	
+	// Handle all data-ref changes
+	ExtPlane.on('data-ref', function(data_ref, value){
+		console.log(data_ref+' - '+value);
+	});
+
+});
+
+```
+
+## Client API
+
+```
+	
+	// Key Press
+	client.key(key_id)
+	
+	// CMD Once
+	client.cmd(cmd)
+	
+	// CMD Begin
+	cilent.begin(cmd)
+	
+	// CMD End
+	client.end(cmd)
+	
+	// Button Press
+	client.button(button_id)
+	
+	// Release Button
+	client.release(button_id)
+	
+	// Set DataRef
+	client.set(data_ref, value)
+	
+	// Subscribe
+	client.subscribe(data_ref, accuracy)
+	
+	// Unsubscribe
+	client.unsubscribe(data_ref)
+	
+	// Interval
+	client.interval(value)
+	
+	// Disconnect
+	client.disconnect()
+	
+```
 
 
 ### More information ?
 
-See the example connector source in index.js for example subscriptions, methods available and event handlers for data refs.
-
+See the example connector source in index.js for example subscriptions, methods available and event handlers for data refs
 
 # Todo
 
