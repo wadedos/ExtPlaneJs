@@ -24,6 +24,36 @@ module.exports = function(config){
 
     /**
      *
+     * CMD Once
+     *
+     * @param {string} cmd - The command
+     */
+    client.cmd = function(cmd){
+        this.write('cmd once '+cmd+'\r\n');
+    };
+
+    /**
+     *
+     * CMD Begin
+     *
+     * @param {string} cmd - The command
+     */
+    client.begin = function(cmd){
+        this.write('cmd begin '+cmd+'\r\n');
+    };
+
+    /**
+     *
+     * CMD End
+     *
+     * @param {string} cmd - The command
+     */
+    client.end = function(cmd){
+        this.write('cmd end '+cmd+'\r\n');
+    };
+
+    /**
+     *
      * Button Press
      *
      * @param {string}  button_id - XPlane button ID
@@ -73,6 +103,16 @@ module.exports = function(config){
     client.unsubscribe = function(data_ref){
         this.write('unsub '+data_ref+'\r\n');
     };
+
+    /**
+     *
+     * How often ExtPlane should update its data from X-Plane, in seconds. Use as high value as possible here for best performance. For example 0.16 would mean 60Hz, 0.33 = 30Hz, 0.1 = 10Hz etc.. Must be a positive float. Default is 0.33.
+     *
+     * @param {float} value
+     */
+    client.interval = function(value){
+        this.write('extplane-set update_interval '+value+'\r\n');
+    }
 
     /**
      *
