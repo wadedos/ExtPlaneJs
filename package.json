@@ -1,5 +1,5 @@
 {
-  "name": "ExtPlaneJs",
+  "name": "extplanejs",
   "version": "0.1.0",
   "description": "A JavaScript Client Library for NodeJs that uses the ExtPlane-Plugin",
   "keywords": [
