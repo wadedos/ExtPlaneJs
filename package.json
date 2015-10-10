@@ -2,7 +2,12 @@
   "name": "ExtPlaneJs",
   "version": "1.0.0",
   "description": "A JavaScript Client Library for NodeJs that uses the ExtPlane-Plugin",
-  "keywords": ["xplane", "x-plane", "extplane", "extplanejs"],
+  "keywords": [
+    "xplane",
+    "x-plane",
+    "extplane",
+    "extplanejs"
+  ],
   "main": "ExtPlaneJs.js",
   "scripts": {
     "test": "mocha",
@@ -14,12 +19,13 @@
     "url": "https://github.com/wadeos/ExtPlaneJs"
   },
   "bugs": {
-      "url": "https://github.com/wadeos/ExtPlaneJs/issues"
+    "url": "https://github.com/wadeos/ExtPlaneJs/issues"
   },
   "engines": {
-      "node": ">= 0.10.0"
+    "node": ">= 0.10.0"
   },
   "dependencies": {
+    "assert": "^1.3.0",
     "async": "^1.4.2",
     "mocha": "^2.3.3"
   },

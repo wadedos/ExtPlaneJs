@@ -4,8 +4,7 @@ A JavaScript Client Library for NodeJs that uses the [ExtPlane plugin](https://g
 
 Inspired by [ExtPlaneInterface for Java](https://github.com/pau662/ExtPlaneInterface) and [ExtPlaneNet for C#](https://github.com/swemaniac/ExtPlaneNet)
 
-## How To use
-### Prerequisites
+## Prerequisites
 1. You need X-Plane (demo works fine) with the [ExtPlane plugin](https://github.com/vranki/ExtPlane) installed.
 2. [NodeJs](https://nodejs.org) >= 0.10.0
 
@@ -13,14 +12,15 @@ Inspired by [ExtPlaneInterface for Java](https://github.com/pau662/ExtPlaneInter
 
 Make sure X-Plane is started and the plugin is installed and active.
 
-### ExtPlane Config
+### ExtPlaneJs Config
 Either modify the config.json or modify the config object passed into ExtPlaneJs
 
 ```
 {
     "host": "127.0.0.1",
     "port": 51000,
-    "broadcast": false
+    "broadcast": false,
+    "debug": true
 }
 
 ```
@@ -33,6 +33,11 @@ Either modify the config.json or modify the config object passed into ExtPlaneJs
 4. Run `npm start`
 
 Watch your terminal as your X-Plane information is streamed on-screen
+
+### Running the tests
+
+1. Make sure X-Plane is running and in a current flight. Not on the QuickFlight screen.
+2. Run `npm test`
 
 
 # Example
@@ -62,53 +67,65 @@ ExtPlane.on('loaded', function(){
 
 ```
 
-## Client API
+# ExtPlaneJS API
 
-```
+### ExtPlaneJs(config)
+Instantiate ExtPlaneJs and try connect
 
-	// Key Press
-	client.key(key_id)
+### ExtPlaneJs.on(event)
+Assign an event handler to the specific event
 
-	// CMD Once
-	client.cmd(cmd)
+### ExtPlaneJs.client.*
+Access the client API from ExtPlaneJs
 
-	// CMD Begin
-	cilent.begin(cmd)
+### Events
 
-	// CMD End
-	client.end(cmd)
-
-	// Button Press
-	client.button(button_id)
-
-	// Release Button
-	client.release(button_id)
-
-	// Set DataRef
-	client.set(data_ref, value)
-
-	// Subscribe
-	client.subscribe(data_ref, accuracy)
-
-	// Unsubscribe
-	client.unsubscribe(data_ref)
-
-	// Interval
-	client.interval(value)
-
-	// Disconnect
-	client.disconnect()
-
-```
+- `loaded` - No parameters
+- `data-ref` (data_ref, value) - Receive all data-ref events over one handler. Broadcast: true
+- `sim/cockpit2/gauges/indicators/airspeed_kts_pilot` (data_ref, value) - Receive individual data-ref events. Broadcast: false
 
 
-### More information ?
+
+# Client API
+
+### client.key(key_id)
+Press a key
+
+### client.once(cmd)
+Execute a command
+
+### client.begin(cmd)
+Begin a command
+
+### client.end(cmd)
+End a command
+
+### client.button(button_id)
+Press a button
+
+### client.release(button_id)
+Release a button
+
+### client.set(data_ref, value)
+Set a data refs value
+
+### client.subscribe(data_ref, [accuracy])
+Subscribe to a data ref
+
+### client.unsubscribe(data_ref)
+Unsubscribe to a data ref
+
+### client.interval(value)
+Override the data update interval
+
+### client.disconnect()
+Send the disconnect command
+
+
+# More information ?
 
 See the example connector source in index.js for example subscriptions, methods available and event handlers for data refs
 
-# Todo
-
-Make this a npm module and test
 
 #  License
 MIT License - Copyright © Bluu Interactive

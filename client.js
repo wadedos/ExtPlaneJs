@@ -2,14 +2,28 @@
 
 var net = require('net');
 
+/**
+ *
+ * @name: ExtPlaneJs
+ * @author: Wade Wildbore - Bluu Interactive
+ * @description: ExtPlane TCP Connector for NodeJS
+ * @see: https://github.com/vranki/ExtPlane - For more information
+ */
 module.exports = function(config){
 
+    /**
+     * Socket Connect
+     */
     var client = net.connect(config, function(){
-        console.log('Connected to '+config.host+':'+config.port);
+        if(config.debug) console.log('Connected to '+config.host+':'+config.port);
     });
 
+    /**
+     *
+     * On Socket End
+     */
     client.on('end', function(){
-        console.log('disconnected from server');
+        if(config.debug) console.log('disconnected from server');
     });
 
     /**
@@ -88,10 +102,10 @@ module.exports = function(config){
      * Subscribe to the XPlane Data Ref
      *
      * @param {string} data_ref - the XPlane Data Ref
+     * @param {float} accuracy
      */
     client.subscribe = function(data_ref, accuracy){
-        accuracy = (accuracy !== undefined ? ' '+accuracy : '');
-        this.write('sub '+data_ref+accuracy+'\r\n');
+        this.write('sub '+data_ref+(accuracy !== undefined ? ' '+accuracy : '')+'\r\n');
     };
 
     /**

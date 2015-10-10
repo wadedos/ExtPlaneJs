@@ -9,7 +9,6 @@ describe('ExtPlaneJs', function(){
         ExtPlaneEmitter = require('../../ExtPlaneJs');
         ExtPlane = new ExtPlaneEmitter(require('../../config.json'));
 
-
         ExtPlane.on('loaded', function(){
 
             this.client.subscribe('sim/flightmodel/engine/ENGN_thro');
@@ -28,7 +27,7 @@ describe('ExtPlaneJs', function(){
         ExtPlane.on('sim/flightmodel/engine/ENGN_thro', function(data_ref, value){
 
             assert.equal(data_ref, 'sim/flightmodel/engine/ENGN_thro');
-            assert(typeof value === 'object', 'Is Float Array');
+            assert.equal(typeof value, 'object');
             done(null);
 
         });

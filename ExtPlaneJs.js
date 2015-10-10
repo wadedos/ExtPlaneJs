@@ -1,5 +1,12 @@
 'use strict';
 
+/**
+ *
+ * @name: ExtPlaneJs
+ * @author: Wade Wildbore - Bluu Interactive
+ * @description: ExtPlane TCP Connector for NodeJS
+ * @see: https://github.com/vranki/ExtPlane - For more information
+ */
 var EventEmitter = require('events').EventEmitter;
 var client = require('./client');
 var util = require('util');
@@ -30,7 +37,7 @@ function ExtPlaneJs(config){
      *
      */
     this.on('loaded', function(){
-        console.log('ExtPlane Ready!');
+        if(this.config.debug) console.log('ExtPlane Ready!');
     });
 
     /**
@@ -73,7 +80,7 @@ function ExtPlaneJs(config){
             self.parseDataRef(cmd, cb);
 
         }, function(err){
-            if(err) console.log(err);
+            if(err && this.config.debug) console.log(err);
         });
 
     });
