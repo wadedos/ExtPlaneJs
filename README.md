@@ -1,5 +1,10 @@
 # ExtPlaneJs #
 
+[![NPM version][npm-image]][npm-url]
+[![NPM version][npm-downloads]][npm-url]
+[![Dependency Status][daviddm-image]][daviddm-url]
+
+
 A JavaScript Client Library for NodeJs that uses the [ExtPlane plugin](https://github.com/vranki/ExtPlane).
 
 Inspired by [ExtPlaneInterface for Java](https://github.com/pau662/ExtPlaneInterface) and [ExtPlaneNet for C#](https://github.com/swemaniac/ExtPlaneNet)
@@ -7,6 +12,15 @@ Inspired by [ExtPlaneInterface for Java](https://github.com/pau662/ExtPlaneInter
 ## Prerequisites
 1. You need X-Plane (demo works fine) with the [ExtPlane plugin](https://github.com/vranki/ExtPlane) installed.
 2. [NodeJs](https://nodejs.org) >= 0.10.0
+
+
+## Installation
+Install via NPM
+
+```
+$ npm install extplanejs
+```
+
 
 ### Connecting to X-Plane
 
@@ -43,7 +57,7 @@ Watch your terminal as your X-Plane information is streamed on-screen
 # Example
 
 ```
-var ExtPlaneJs = require('ExtPlaneJs');
+var ExtPlaneJs = require('extplanejs');
 
 var ExtPlane = new ExtPlaneJs({
     host: '127.0.0.1',
@@ -124,10 +138,16 @@ Send the disconnect command
 
 # More information ?
 
-See the example connector source in index.js for example subscriptions, methods available and event handlers for data refs
+See the example connector source in example.js for example subscriptions, methods available and event handlers for data refs
 
 
 #  License
 MIT License - Copyright © Bluu Interactive
 
 [![Bluu](http://www.bluu.co.nz/async_js/img/wings.png)](http://www.bluu.co.nz)
+
+[npm-image]: https://img.shields.io/npm/v/extplanejs.svg
+[npm-url]: https://www.npmjs.com/package/extplanejs
+[daviddm-image]: http://img.shields.io/david/wadeos/extplanejs.svg
+[daviddm-url]: https://david-dm.org/wadeos/extplanejs
+[npm-downloads]: https://img.shields.io/npm/dt/extplanejs.svg
