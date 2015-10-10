@@ -7,7 +7,7 @@ Inspired by [ExtPlaneInterface for Java](https://github.com/pau662/ExtPlaneInter
 ## How To use
 ### Prerequisites
 1. You need X-Plane (demo works fine) with the [ExtPlane plugin](https://github.com/vranki/ExtPlane) installed.
-2. [NodeJs](https://nodejs.org) v.4.00
+2. [NodeJs](https://nodejs.org) >= 0.10.0
 
 ### Connecting to X-Plane
 
@@ -49,10 +49,10 @@ var ExtPlane = new ExtPlaneJs({
 ExtPlane.on('loaded', function(){
 
 	ExtPlane.client.interval(0.33);
-	
+
 	// Subscribe to the airspeed
 	ExtPlane.client.subscribe('sim/cockpit2/gauges/indicators/airspeed_kts_pilot');
-	
+
 	// Handle all data-ref changes
 	ExtPlane.on('data-ref', function(data_ref, value){
 		console.log(data_ref+' - '+value);
@@ -65,40 +65,40 @@ ExtPlane.on('loaded', function(){
 ## Client API
 
 ```
-	
+
 	// Key Press
 	client.key(key_id)
-	
+
 	// CMD Once
 	client.cmd(cmd)
-	
+
 	// CMD Begin
 	cilent.begin(cmd)
-	
+
 	// CMD End
 	client.end(cmd)
-	
+
 	// Button Press
 	client.button(button_id)
-	
+
 	// Release Button
 	client.release(button_id)
-	
+
 	// Set DataRef
 	client.set(data_ref, value)
-	
+
 	// Subscribe
 	client.subscribe(data_ref, accuracy)
-	
+
 	// Unsubscribe
 	client.unsubscribe(data_ref)
-	
+
 	// Interval
 	client.interval(value)
-	
+
 	// Disconnect
 	client.disconnect()
-	
+
 ```
 
 
