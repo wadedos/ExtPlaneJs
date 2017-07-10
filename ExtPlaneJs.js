@@ -148,7 +148,7 @@ function ExtPlaneJs(config){
 
             // data
             case 'b':
-                return new Buffer(value, 'base64').toString('ascii');
+                atob(value);
             break;
 
             default:
