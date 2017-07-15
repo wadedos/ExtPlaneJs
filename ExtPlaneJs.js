@@ -148,7 +148,7 @@ function ExtPlaneJs(config){
 
             // data
             case 'b':
-
+                atob(value);
             break;
 
             default:
