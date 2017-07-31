@@ -11,6 +11,7 @@ var EventEmitter = require('events').EventEmitter;
 var client = require('./client');
 var util = require('util');
 var async = require('async');
+var base64 = require('base-64');
 
 function ExtPlaneJs(config){
 
@@ -146,9 +147,9 @@ function ExtPlaneJs(config){
                 return JSON.parse(value);
             break;
 
-            // data
+            // base64 data
             case 'b':
-                atob(value);
+                return base64.decode(value);
             break;
 
             default:
