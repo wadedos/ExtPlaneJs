@@ -65,6 +65,12 @@ module.exports = function(config){
     client.end = function(cmd){
         this.write('cmd end '+cmd+'\r\n');
     };
+    
+    // Error handling, if the simulator is turned of etc.
+    
+    client.on('error', function(error) {
+        console.log('An error occurred!', error);
+    });
 
     /**
      *
