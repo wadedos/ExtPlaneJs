@@ -1,6 +1,6 @@
 {
   "name": "extplanejs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A JavaScript Client Library for NodeJs that uses the ExtPlane-Plugin",
   "keywords": [
     "xplane",
@@ -27,9 +27,9 @@
   },
   "dependencies": {
     "assert": "^1.3.0",
-    "async": "^1.4.2",
+    "async": "^2.6.1",
     "base-64": "^0.1.0",
-    "mocha": "^2.3.3"
+    "mocha": "^5.2.0"
   },
   "license": "MIT"
 }

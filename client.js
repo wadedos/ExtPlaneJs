@@ -27,6 +27,13 @@ module.exports = function(config){
     });
 
     /**
+     * On Socket Error
+     */
+    client.on('error', function(error) {
+        if(config.debug) console.log('An error occurred!', error);
+    });
+
+    /**
      *
      * Key Press
      *
@@ -66,12 +73,6 @@ module.exports = function(config){
         this.write('cmd end '+cmd+'\r\n');
     };
     
-    // Error handling, if the simulator is turned of etc.
-    
-    client.on('error', function(error) {
-        console.log('An error occurred!', error);
-    });
-
     /**
      *
      * Button Press
