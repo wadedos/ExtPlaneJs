@@ -52,7 +52,7 @@ function ExtPlaneJs(config){
         // log incoming TCP stream
         //console.log(data.toString());
 
-        if(data.toString() == 'EXTPLANE 1\n')
+        if(data.toString().includes('EXTPLANE'))
         {
             // loaded..
             return this.emit('loaded');

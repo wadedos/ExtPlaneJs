@@ -22,13 +22,14 @@
     "url": "https://github.com/wadeos/ExtPlaneJs/issues"
   },
   "engines": {
-    "node": ">= 0.10.0",
-    "npm": ">= 2.3"
+    "node": ">= 4.0.0"
   },
   "dependencies": {
-    "assert": "^1.3.0",
     "async": "^2.6.1",
-    "base-64": "^0.1.0",
+    "base-64": "^0.1.0"
+  },
+  "devDependencies": {
+    "assert": "^1.3.0",
     "mocha": "^5.2.0"
   },
   "license": "MIT"
