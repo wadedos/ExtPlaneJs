@@ -11,7 +11,7 @@ Inspired by [ExtPlaneInterface for Java](https://github.com/pau662/ExtPlaneInter
 
 ## Prerequisites
 1. You need X-Plane (demo works fine) with the [ExtPlane plugin](https://github.com/vranki/ExtPlane) installed.
-2. [NodeJs](https://nodejs.org) >= 0.10.0
+2. [NodeJs](https://nodejs.org) >= 4.0.0
 
 
 ## Installation
