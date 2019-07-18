@@ -1,2 +1,5 @@
 node_modules
 .history
+coverage
+.nyc_output
+package-lock.json

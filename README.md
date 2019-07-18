@@ -34,7 +34,7 @@ Either modify the config.json or modify the config object passed into ExtPlaneJs
     "host": "127.0.0.1",
     "port": 51000,
     "broadcast": false,
-    "debug": true
+    "autoConnect": true
 }
 
 ```
@@ -57,9 +57,9 @@ Watch your terminal as your X-Plane information is streamed on-screen
 # Example
 
 ```
-var ExtPlaneJs = require('extplanejs');
+const ExtPlaneJs = require('extplanejs');
 
-var ExtPlane = new ExtPlaneJs({
+const ExtPlane = new ExtPlaneJs({
     host: '127.0.0.1',
     port: 51000,
     broadcast: true

@@ -5,8 +5,8 @@
  * @description: ExtPlane TCP Connector for NodeJS
  * @see: https://github.com/vranki/ExtPlane - For more information
  */
-var ExtPlaneEmitter = require('./ExtPlaneJs');
-var ExtPlane = new ExtPlaneEmitter(require('./config.json'));
+const ExtPlaneEmitter = require('./extplane');
+const ExtPlane = new ExtPlaneEmitter(require('./config.json'));
 
 // Loaded CB
 ExtPlane.on('loaded', function(){
