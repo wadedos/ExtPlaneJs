@@ -10,7 +10,8 @@
   ],
   "main": "ExtPlaneJs.js",
   "scripts": {
-    "test": "mocha --reporter spec",
+    "build": "tsc",
+    "test": "mocha --reporter spec test/unit/ExtPlaneJs.test.js",
     "start": "node ./example.js"
   },
   "author": "wadedos",
@@ -25,12 +26,14 @@
     "node": ">= 4.0.0"
   },
   "dependencies": {
-    "async": "^3.1.0",
-    "base-64": "^0.1.0"
+    "async": "^3.1.0"
   },
   "devDependencies": {
+    "@types/async": "^3.2.15",
+    "@types/node": "^18.11.2",
     "assert": "^1.3.0",
-    "mocha": "^5.2.0"
+    "mocha": "^10.1.0",
+    "typescript": "^4.8.4"
   },
   "license": "MIT"
 }
