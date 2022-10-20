@@ -30,7 +30,7 @@ export default class ExtPlaneJs extends EventEmitter {
         this.config = config;
 
         // Couple the TCP clients on data event to ExtPlaneJs
-        this.client.on('data', (data: string) => {
+        this.client.s.on('data', (data: string) => {
             this.emit('data', data);
         });
 
@@ -52,7 +52,7 @@ export default class ExtPlaneJs extends EventEmitter {
         this.on('data', (data: string) => {
 
             // log incoming TCP stream
-            //console.log(data.toString());
+            console.log(data.toString());
 
             if (data.toString().includes('EXTPLANE'))
                 // loaded..

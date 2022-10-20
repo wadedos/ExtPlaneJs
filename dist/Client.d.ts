@@ -1,6 +1,7 @@
-import { connect, Socket } from 'net';
+/// <reference types="node" />
+/// <reference types="node" />
+import { Socket } from 'net';
 import { EventEmitter } from 'events';
-
 /**
  *
  * @name: ExtPlaneJs
@@ -9,112 +10,61 @@ import { EventEmitter } from 'events';
  * @description: ExtPlane TCP Connector for NodeJS
  * @see: https://github.com/vranki/ExtPlane - For more information
  */
-
 interface Config {
     host: string;
     port: number;
     broadcast: boolean;
     debug: boolean;
 }
-
 export default class Client extends EventEmitter {
     h: string;
     p: number;
     b: boolean;
     d: boolean;
-
     s: Socket;
-
-    constructor(config: Config) {
-        super();
-        
-        this.h = config.host;
-        this.p = config.port;
-        this.b = config.broadcast;
-        this.d = config.debug;
-
-        /**
-         * Socket Connect
-         */
-        this.s = connect(config, () => {
-            if (this.d) console.log(`Connected to ${this.h}:${this.p}`);
-        });
-
-        /**
-         * On Socket End
-         */
-        this.s.on('end', () => {
-            if (this.d) console.log('Disconnected from server');
-        });
-
-        /**
-         * On Socket Error
-         */
-        this.s.on('error', (err: Error) => {
-            if (this.d) console.log('An error occurred!', err);
-        });
-    }
-    
+    constructor(config: Config);
     /**
      *
      * Key Press
      *
      * @param {string} key_id - XPlane key ID
      */
-    key(key_id: string) {
-        this.s.write(`key ${key_id}\r\n`);
-    };
-
+    key(key_id: string): void;
     /**
      *
      * CMD Once
      *
      * @param {string} cmd - The command
      */
-    cmd(cmd: string){
-        this.s.write(`cmd once ${cmd}\r\n`);
-    };
-
+    cmd(cmd: string): void;
     /**
      *
      * CMD Begin
      *
      * @param {string} cmd - The command
      */
-    begin(cmd: string){
-        this.s.write(`cmd begin ${cmd}\r\n`);
-    };
-
+    begin(cmd: string): void;
     /**
      *
      * CMD End
      *
      * @param {string} cmd - The command
      */
-    end(cmd: string){
-        this.s.write(`cmd end ${cmd}\r\n`);
-    };
-    
+    end(cmd: string): void;
     /**
      *
      * Button Press
      *
      * @param {string}  button_id - XPlane button ID
      */
-    button(button_id: string){
-        this.s.write(`but ${button_id}\r\n`);
-    };
-
+    button(button_id: string): void;
     /**
      *
      * Release Button
      *
      * @param {string} button_id - XPlane button ID
      */
-    release(button_id: string){
-        this.s.write(`rel ${button_id}\r\n`);
-    };
-
+    release(button_id: string): void;
     /**
      *
      * Set a Data Ref to a specific value
@@ -122,10 +72,7 @@ export default class Client extends EventEmitter {
      * @param {string} data_ref - the XPlane Data Ref
      * @param {string} value - ExtPlane Values
      */
-    set(data_ref: string, value: string){
-        this.s.write(`set ${data_ref} ${value}\r\n`);
-    };
-
+    set(data_ref: string, value: string): void;
     /**
      *
      * Subscribe to the XPlane Data Ref
@@ -133,36 +80,25 @@ export default class Client extends EventEmitter {
      * @param {string} data_ref - the XPlane Data Ref
      * @param {float} accuracy
      */
-    subscribe(data_ref: string, accuracy?: number){
-        this.s.write(`sub ${data_ref}${accuracy !== undefined ? ' ' + accuracy : ''}\r\n`);
-    };
-
+    subscribe(data_ref: string, accuracy?: number): void;
     /**
      *
      * Unsubscribe from the XPlane Data Ref
      *
      * @param {string} data_ref - the XPlane Data Ref
      */
-    unsubscribe(data_ref: string){
-        this.s.write(`unsub ${data_ref}\r\n`);
-    };
-
+    unsubscribe(data_ref: string): void;
     /**
      *
      * How often ExtPlane should update its data from X-Plane, in seconds. Use as high value as possible here for best performance. For example 0.16 would mean 60Hz, 0.33 = 30Hz, 0.1 = 10Hz etc.. Must be a positive float. Default is 0.33.
      *
      * @param {float} value
      */
-    interval(value: number){
-        this.s.write(`extplane-set update_interval ${value}\r\n`);
-    }
-
+    interval(value: number): void;
     /**
      *
      * Disconnect from ExtPlane and then close the TCP socket
      */
-    disconnect(){
-        this.s.write(`disconnect\r\n`);
-        this.s.end();
-    };
+    disconnect(): void;
 }
+export {};

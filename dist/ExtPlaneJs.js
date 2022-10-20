@@ -21,7 +21,7 @@ class ExtPlaneJs extends events_1.EventEmitter {
         this.client = new Client_1.default(config);
         this.config = config;
         // Couple the TCP clients on data event to ExtPlaneJs
-        this.client.on('data', (data) => {
+        this.client.s.on('data', (data) => {
             this.emit('data', data);
         });
         /**
@@ -41,7 +41,7 @@ class ExtPlaneJs extends events_1.EventEmitter {
          */
         this.on('data', (data) => {
             // log incoming TCP stream
-            //console.log(data.toString());
+            console.log(data.toString());
             if (data.toString().includes('EXTPLANE'))
                 // loaded..
                 return this.emit('loaded');

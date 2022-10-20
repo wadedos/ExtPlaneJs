@@ -12,21 +12,21 @@ class Client extends events_1.EventEmitter {
         /**
          * Socket Connect
          */
-        this.c = (0, net_1.connect)(config, () => {
+        this.s = (0, net_1.connect)(config, () => {
             if (this.d)
                 console.log(`Connected to ${this.h}:${this.p}`);
         });
         /**
          * On Socket End
          */
-        this.c.on('end', () => {
+        this.s.on('end', () => {
             if (this.d)
                 console.log('Disconnected from server');
         });
         /**
          * On Socket Error
          */
-        this.c.on('end', (err) => {
+        this.s.on('error', (err) => {
             if (this.d)
                 console.log('An error occurred!', err);
         });
@@ -38,7 +38,7 @@ class Client extends events_1.EventEmitter {
      * @param {string} key_id - XPlane key ID
      */
     key(key_id) {
-        this.c.write(`key ${key_id}\r\n`);
+        this.s.write(`key ${key_id}\r\n`);
     }
     ;
     /**
@@ -48,7 +48,7 @@ class Client extends events_1.EventEmitter {
      * @param {string} cmd - The command
      */
     cmd(cmd) {
-        this.c.write(`cmd once ${cmd}\r\n`);
+        this.s.write(`cmd once ${cmd}\r\n`);
     }
     ;
     /**
@@ -58,7 +58,7 @@ class Client extends events_1.EventEmitter {
      * @param {string} cmd - The command
      */
     begin(cmd) {
-        this.c.write(`cmd begin ${cmd}\r\n`);
+        this.s.write(`cmd begin ${cmd}\r\n`);
     }
     ;
     /**
@@ -68,7 +68,7 @@ class Client extends events_1.EventEmitter {
      * @param {string} cmd - The command
      */
     end(cmd) {
-        this.c.write(`cmd end ${cmd}\r\n`);
+        this.s.write(`cmd end ${cmd}\r\n`);
     }
     ;
     /**
@@ -78,7 +78,7 @@ class Client extends events_1.EventEmitter {
      * @param {string}  button_id - XPlane button ID
      */
     button(button_id) {
-        this.c.write(`but ${button_id}\r\n`);
+        this.s.write(`but ${button_id}\r\n`);
     }
     ;
     /**
@@ -88,7 +88,7 @@ class Client extends events_1.EventEmitter {
      * @param {string} button_id - XPlane button ID
      */
     release(button_id) {
-        this.c.write(`rel ${button_id}\r\n`);
+        this.s.write(`rel ${button_id}\r\n`);
     }
     ;
     /**
@@ -99,7 +99,7 @@ class Client extends events_1.EventEmitter {
      * @param {string} value - ExtPlane Values
      */
     set(data_ref, value) {
-        this.c.write(`set ${data_ref} ${value}\r\n`);
+        this.s.write(`set ${data_ref} ${value}\r\n`);
     }
     ;
     /**
@@ -110,7 +110,7 @@ class Client extends events_1.EventEmitter {
      * @param {float} accuracy
      */
     subscribe(data_ref, accuracy) {
-        this.c.write(`sub ${data_ref}${accuracy !== undefined ? ' ' + accuracy : ''}\r\n`);
+        this.s.write(`sub ${data_ref}${accuracy !== undefined ? ' ' + accuracy : ''}\r\n`);
     }
     ;
     /**
@@ -120,7 +120,7 @@ class Client extends events_1.EventEmitter {
      * @param {string} data_ref - the XPlane Data Ref
      */
     unsubscribe(data_ref) {
-        this.c.write(`unsub ${data_ref}\r\n`);
+        this.s.write(`unsub ${data_ref}\r\n`);
     }
     ;
     /**
@@ -130,15 +130,15 @@ class Client extends events_1.EventEmitter {
      * @param {float} value
      */
     interval(value) {
-        this.c.write(`extplane-set update_interval ${value}\r\n`);
+        this.s.write(`extplane-set update_interval ${value}\r\n`);
     }
     /**
      *
      * Disconnect from ExtPlane and then close the TCP socket
      */
     disconnect() {
-        this.c.write(`disconnect\r\n`);
-        this.c.end();
+        this.s.write(`disconnect\r\n`);
+        this.s.end();
     }
     ;
 }
