@@ -52,7 +52,7 @@ export default class ExtPlaneJs extends EventEmitter {
         this.on('data', (data: string) => {
 
             // log incoming TCP stream
-            console.log(data.toString());
+            //console.log(data.toString());
 
             if (data.toString().includes('EXTPLANE'))
                 // loaded..
