@@ -8,7 +8,7 @@
     "extplane",
     "extplanejs"
   ],
-  "main": "ExtPlaneJs.js",
+  "main": "dist/ExtPlaneJs.js",
   "scripts": {
     "build": "tsc",
     "test": "mocha --reporter spec test/unit/ExtPlaneJs.test.js",
